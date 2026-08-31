@@ -1,0 +1,20 @@
+.container {
+    width: 200px;
+    height: 200px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: DodgerBlue;
+}
+
+.container div {
+  background-color: #9f0000;
+  margin: 10px;
+  padding: 20px;
+  font-size: 24px;
+}
+@media screen and (max-width: 768px) {
+    
+}

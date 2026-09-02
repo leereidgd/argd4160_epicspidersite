@@ -1,11 +1,31 @@
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
-    font-family: "century-gothic", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 18px;
-    color: #381D2A;
-    margin-bottom: 20px;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 100px;
+  font-family: "century-gothic", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.grid-container div:nth-child(1) {
+  background-color: #D1B3C4;
+  border-radius: 90px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.grid-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+p {
+  font-family: "century-gothic", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-align: right;
 }

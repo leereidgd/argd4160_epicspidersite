@@ -11,7 +11,7 @@ nav {
    margin: 40px auto 0 auto;
    box-sizing: border-box;
 
-    background-color:#D1B3C4;
+    background-color: #381D2A;
     border-radius: 90px;
     border-style: solid;
     padding: 10px;
@@ -30,7 +30,7 @@ li {
 }
 a {
     text-decoration: none;
-    color: #381D2A;
+    color: #C5E99B;
 }
 body {
     margin: 0;
@@ -54,7 +54,7 @@ background-color: white;
 font-weight: 500;
 }
 #welcome {
-    color: #C5E99B;
+    color: #D1B3C4;
     font-family: "exocet", sans-serif;
 font-weight: 500;
 }

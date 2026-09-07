@@ -19,6 +19,7 @@
   min-height: 1000px;
   width: 500px;
   overflow: hidden;
+  margin-bottom: 50px;
 }
 
 .grid-container img {

@@ -75,3 +75,60 @@ font-style: normal;
 font-size: 20px;
 color: #381D2A;
 }
+
+@media screen and (max-width: 768px) {
+  
+  nav {
+    margin: 15px auto 0 auto;
+    width: calc(100% - 20px);
+  }
+
+  ul {
+    gap: 10px;
+    font-size: 8px;
+  }
+
+  li {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  h2 {
+    font-size: 48px;       
+    line-height: 52px;     
+    margin-top: 140px;     
+    margin-left: 20px;     
+    margin-right: 20px;    
+  }
+
+  div {
+    font-size: 16px;       
+    margin-top: 40px;
+    margin-left: 20px;     
+    margin-right: 20px;    
+  }
+
+  p {
+    font-size: 16px;
+    margin-top: 25px;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr; 
+    gap: 40px;
+    padding: 0 20px;
+  }
+
+  .grid-container div:nth-child(1),
+  .grid-container div:nth-child(2) {
+    width: 100%;           
+    margin-left: 0;        
+    margin-top: 20px;
+  }
+
+  .fixed-corner-bg {
+    width: 100%;           
+    bottom: -100px;
+    right: -50px;
+  }
+}

@@ -1,0 +1,22 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  font-family: "century-gothic", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  margin-top: 50px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container img {
+  display: block;
+  width: 80%;
+  max-width: 900px;
+  height: auto;
+}

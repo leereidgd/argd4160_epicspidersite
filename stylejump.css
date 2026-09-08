@@ -66,6 +66,12 @@ h3 {
   height:fit-content
 }
 
+.biodiversity-link {
+    color: #D1B3C4;
+    font-family: 'century-gothic', sans-serif;
+    font-size: 18px;
+    font-style: italic;
+  }
 
 @media screen and (max-width: 768px) {
   
@@ -104,3 +110,9 @@ h3 {
     font-size: 14px; 
   }
 }
+
+ @media screen and (max-width: 768px) {
+    .biodiversity-link {
+      font-size: 14px;
+    }
+  }

@@ -1,25 +1,42 @@
-h2 {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  margin: 0;
-  text-align: right;
-  font-size: 24px;
-}
-p {
-  text-align: center;
-  margin-top: 150px;
+body {
+	background-color: white;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
- @media screen and (max-width: 768px) {
-         h2 {
-  display: none;
+#skew-frame {
+	position: relative;
+	width: 500px;
+	height: 500px;
+	margin: 150px auto 0;
+	border: 3px solid white;
+	background-color: white;
+	overflow: hidden;
 }
 
-  p {
-    margin: 120px 20px 0;
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: center;
-  }
- }
+.node {
+	border-radius: 12px;
+	width: 24px;
+	height: 24px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #D3BCC7;
+}
+
+canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: white;
+	width: 500px;
+	height: 500px;
+}
+
+#spider-party-title:hover a,
+#spider-party-title a:hover {
+	color: #C5E99B !important;
+}

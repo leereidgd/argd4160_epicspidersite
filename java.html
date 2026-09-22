@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="java.css">
+</head>
+<body>
+    <p>
+  <label for="word-input">text</label>
+  <input id="word-input" type="text" placeholder="enter something" />
+  
+</p>
+
+<p>
+  <label for="face-color">face color</label>
+  <input id="face-color" type="color" value="#D1B3C4" />
+  <output for="face-color"></output>
+</p>
+
+<div id="controls">
+  <section class="control-group">
+    <h2>jumper</h2>
+    <div class="control-row">
+      <label for="left-eye-x">jumper x</label>
+      <input id="left-eye-x" type="range" min="0" max="400" value="100" />
+    </div>
+    <div class="control-row">
+      <label for="left-eye-y">jumper y</label>
+      <input id="left-eye-y" type="range" min="0" max="400" value="110" />
+    </div>
+    <div class="control-row">
+      <label for="left-eye-scale">jumper scale</label>
+      <input id="left-eye-scale" type="range" min="1" max="5" step="0.1" value="1" />
+      <output for="left-eye-scale"></output>
+    </div>
+  </section>
+
+  <section class="control-group">
+    <h2>tarantula</h2>
+    <div class="control-row">
+      <label for="right-eye-x">tarantula x</label>
+      <input id="right-eye-x" type="range" min="0" max="400" value="200" />
+    </div>
+    <div class="control-row">
+      <label for="right-eye-y">tarantula y</label>
+      <input id="right-eye-y" type="range" min="0" max="400" value="110" />
+    </div>
+    <div class="control-row">
+      <label for="right-eye-scale">tarantula scale</label>
+      <input id="right-eye-scale" type="range" min="1" max="5" step="0.1" value="1" />
+      <output for="right-eye-scale"></output>
+    </div>
+  </section>
+
+  <section class="control-group">
+    <h2>party hat</h2>
+    <div class="control-row">
+      <label for="party-hat-x">party hat x</label>
+      <input id="party-hat-x" type="range" min="0" max="600" value="150" />
+    </div>
+    <div class="control-row">
+      <label for="party-hat-y">party hat y</label>
+      <input id="party-hat-y" type="range" min="0" max="400" value="230" />
+    </div>
+    <div class="control-row">
+      <label for="mouth-scale">party hat scale</label>
+      <input id="mouth-scale" type="range" min="0.1" max="3" step="0.1" value="1" />
+      <output for="mouth-scale"></output>
+    </div>
+  </section>
+
+  <section class="control-group">
+    <h2>party hat 2</h2>
+    <div class="control-row">
+      <label for="party-hat-2-x">party hat 2 x</label>
+      <input id="party-hat-2-x" type="range" min="0" max="600" value="300" />
+    </div>
+    <div class="control-row">
+      <label for="party-hat-2-y">party hat 2 y</label>
+      <input id="party-hat-2-y" type="range" min="0" max="400" value="230" />
+    </div>
+    <div class="control-row">
+      <label for="party-hat-2-scale">party hat 2 scale</label>
+      <input id="party-hat-2-scale" type="range" min="0.1" max="3" step="0.1" value="1" />
+      <output for="party-hat-2-scale"></output>
+    </div>
+  </section>
+</div>
+
+<div id="bg">
+  <div id="face"></div>
+  <img id="leftEye" src="images/spood3.png"/>
+  <img id="rightEye" src="images/spood5.png"/>
+  <img id="mouth" src="images/birthday_hat_PNG86491.png" alt="birthday hat" />
+  <img id="partyHat2" src="images/birthday_hat_PNG86491.png" alt="second birthday hat" />
+  <h1 id="word">Spider Party!!!!!!!!!</h1>
+</div>
+<script src="java.js"></script>
+</body>
+</html>

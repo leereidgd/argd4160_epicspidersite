@@ -1,0 +1,146 @@
+[
+  {
+    "Plant Type": "Aloe Vera",
+    "Region_of_Origin": "South-eastern Araibian Peninsula",
+    "Sunlight_Requirements": "High",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Basil",
+    "Region_of_Origin": "Central Africa and Asia",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Bladderwort",
+    "Region_of_Origin": "Worldwide",
+    "Sunlight_Requirements": "High",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "Butterwort",
+    "Region_of_Origin": "Northen America, Europe, and Asia",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "cobra lily ",
+    "Region_of_Origin": "North Califonia and Southwest Oregon",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "Corkscrew",
+    "Region_of_Origin": "West and North Cape Provinces of South Africa",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "Dewy Pine",
+    "Region_of_Origin": "Western Iberian Peninsula/Northwest Africa",
+    "Sunlight_Requirements": "High",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "Golden Pothos",
+    "Region_of_Origin": "Mo'orea",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Hoya Carnosa",
+    "Region_of_Origin": "East Asia, Southrast Asia, and parts of Austrailia",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Hoya Macrophylla",
+    "Region_of_Origin": "Southeast Asia and Malesia",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Hoya Pink Flamingo",
+    "Region_of_Origin": "Southeast Asia and Malesia",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Monstera Adansonii",
+    "Region_of_Origin": "Cental/South America",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Monstera Deleciosa",
+    "Region_of_Origin": "Central America",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Monstera Deleciosa Thai Constellation",
+    "Region_of_Origin": "Thailand",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Monstera Esqueletoo",
+    "Region_of_Origin": "Costa Rica ",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Nepenthes",
+    "Region_of_Origin": "Old World Tropics",
+    "Sunlight_Requirements": "High",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "Purple Basil",
+    "Region_of_Origin": "Africa Asia",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  },
+  {
+    "Plant Type": "Sarracenia",
+    "Region_of_Origin": "North Carolina",
+    "Sunlight_Requirements": "High",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "sun pitcher",
+    "Region_of_Origin": "High-elevation Mountains in South America",
+    "Sunlight_Requirements": "High",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "Sundews",
+    "Region_of_Origin": "Worldwide",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "Tradescantia",
+    "Region_of_Origin": "Americas",
+    "Sunlight_Requirements": "Medium-high",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "Venus Fly Trap",
+    "Region_of_Origin": "North Carolina ",
+    "Sunlight_Requirements": "High",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "Waterwheel",
+    "Region_of_Origin": "Africa, Australia, and Eurasia",
+    "Sunlight_Requirements": "High",
+    "Optimal_Watering_Frequency": "Constant saturation"
+  },
+  {
+    "Plant Type": "White Bird of Paridise",
+    "Region_of_Origin": "Coastal Southern Africa",
+    "Sunlight_Requirements": "High",
+    "Optimal_Watering_Frequency": "When soil is bone dry"
+  }
+]

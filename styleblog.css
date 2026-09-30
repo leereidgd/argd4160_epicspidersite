@@ -36,7 +36,70 @@ canvas {
 	height: 500px;
 }
 
-#spider-party-title:hover a,
-#spider-party-title a:hover {
+h2 {
+	position: fixed;
+	right: 40px;
+	left: auto;
+	bottom: 30px;
+	top: auto;
+	text-align: right;
+	color: #381D2A;
+	padding-right: 0;
+}
+
+.spider-party-list,
+.spider-party-list li,
+.spider-party-list a {
+	font-family: "century-gothic", sans-serif;
+}
+
+.spider-party-list {
+    list-style: disc;
+    display: block;
+    padding-left: 24px;
+    margin: 20px 0 0 0;
+}
+
+.spider-party-list li {
+    display: list-item;
+    margin: 8px 0;
+}
+
+.spider-party-list a {
+	color: #381D2A;
+}
+
+.spider-party-list a:hover,
+.spider-party-list a:focus,
+.spider-party-list li:hover a {
 	color: #C5E99B !important;
+	transition: color 0.2s ease;
+}
+
+p {
+	font-family: "century-gothic";
+}
+
+@media screen and (max-width: 768px) {
+
+  #skew-frame {
+    width: 90%;
+    height: 350px;
+    margin: 120px auto 0;
+  }
+
+  .spider-party-list {
+    margin-top: 20px;
+    padding: 0 20px;
+    font-size: 16px;
+  }
+
+  .spider-party-list li {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+    h2 {
+  display: none;
+} 
 }

@@ -25,13 +25,62 @@ const sortConfig = {
     field: 'Region_of_Origin',
     order: {},
     colors: {
-      default: '#D3BCC7'
+      default: '#a7768f'
     }
   }
 };
 
 let allPlants = [];
-let activeSort = 'all';
+let activeSort = 'water';
+
+const plantImages = {
+  'Aloe Vera': 'images/aloe.jpg',
+  'Basil': 'images/basil.jpg',
+  'Bladderwort': 'images/bladderwort.jpg',
+  'Butterwort': 'images/butterwort.jpg',
+  'cobra lily': 'images/cobralily.jpg',
+  'Corkscrew': 'images/corkscrew.jpg',
+  'Dewy Pine': 'images/dewypine.jpg',
+  'Golden Pothos': 'images/pothos.jpg',
+  'Hoya Carnosa': 'images/hoyacarnosa.jpg',
+  'Hoya Macrophylla': 'images/hoyamacrophylla.jpg',
+  'Hoya Pink Flamingo': 'images/hoyapinkflamingo.jpg',
+  'Monstera Adansonii': 'images/monsteraadansonii.jpg',
+  'Monstera Deleciosa': 'images/monst.jpg',
+  'Monstera Deleciosa Thai Constellation': 'images/monsterathaiconstellation.jpg',
+  'Monstera Esqueletoo': 'images/monsteraesqueletoo.jpg',
+  'Nepenthes': 'images/nepenthes.jpg',
+  'Purple Basil': 'images/purplebasil.jpg',
+  'Sarracenia': 'images/sccna.jpg',
+  'sun pitcher': 'images/sunpitcher.jpg',
+  'Sundews': 'images/sundew.jpg',
+  'Tradescantia': 'images/tradescantia.jpg',
+  'Venus Fly Trap': 'images/venus.jpg',
+  'Waterwheel': 'images/waterwheel.jpg',
+  'White Bird of Paridise': 'images/plant.jpg'
+};
+
+function showPlantPreview(plant) {
+  const previewImage = document.getElementById('plant-preview-image');
+  const plantName = plant['Plant Type'].trim();
+  const imagePath = plantImages[plantName];
+
+  if (!imagePath) {
+    clearPlantPreview();
+    return;
+  }
+
+  previewImage.src = imagePath;
+  previewImage.alt = plantName;
+  previewImage.hidden = false;
+}
+
+function clearPlantPreview() {
+  const previewImage = document.getElementById('plant-preview-image');
+  previewImage.hidden = true;
+  previewImage.removeAttribute('src');
+  previewImage.alt = '';
+}
 
 function getSortedPlants(sortKey) {
   const config = sortConfig[sortKey];
@@ -71,6 +120,11 @@ function renderPlants(plants, sortKey = 'all') {
   filteredPlants.forEach((plant) => {
     const listItem = document.createElement('li');
     listItem.className = 'plant-item';
+    listItem.tabIndex = 0;
+    listItem.addEventListener('mouseenter', () => showPlantPreview(plant));
+    listItem.addEventListener('mouseleave', clearPlantPreview);
+    listItem.addEventListener('focus', () => showPlantPreview(plant));
+    listItem.addEventListener('blur', clearPlantPreview);
 
     const name = document.createElement('span');
     name.textContent = plant['Plant Type'];
@@ -136,34 +190,53 @@ const waterButton = document.getElementById('water-button');
 const sunlightButton = document.getElementById('sunlight-button');
 const locationButton = document.getElementById('location-button');
 const searchField = document.getElementById('plant-search');
+const sortButtons = {
+  all: allButton,
+  water: waterButton,
+  location: locationButton,
+  sunlight: sunlightButton
+};
+
+function setActiveSort(sortKey) {
+  activeSort = sortKey;
+
+  Object.entries(sortButtons).forEach(([key, button]) => {
+    if (button) {
+      button.classList.toggle('active', key === sortKey);
+      button.setAttribute('aria-pressed', String(key === sortKey));
+    }
+  });
+}
 
 if (allButton) {
   allButton.addEventListener('click', () => {
-    activeSort = 'all';
+    setActiveSort('all');
     renderPlants(allPlants, activeSort);
   });
 }
 
 if (waterButton) {
   waterButton.addEventListener('click', () => {
-    activeSort = 'water';
+    setActiveSort('water');
     renderPlants(getSortedPlants('water'), activeSort);
   });
 }
 
 if (sunlightButton) {
   sunlightButton.addEventListener('click', () => {
-    activeSort = 'sunlight';
+    setActiveSort('sunlight');
     renderPlants(getSortedPlants('sunlight'), activeSort);
   });
 }
 
 if (locationButton) {
   locationButton.addEventListener('click', () => {
-    activeSort = 'location';
+    setActiveSort('location');
     renderPlants(getSortedPlants('location'), activeSort);
   });
 }
+
+setActiveSort(activeSort);
 
 if (searchField) {
   searchField.addEventListener('input', () => {

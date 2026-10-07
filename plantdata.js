@@ -23,15 +23,15 @@ const sortConfig = {
   },
   location: {
     field: 'Region_of_Origin',
-    order: {},
     colors: {
-      default: '#a7768f'
+      default: '#facbee'
     }
   }
 };
 
 let allPlants = [];
-let activeSort = 'water';
+let activeSort = 'all';
+let activeCategory = '';
 
 const plantImages = {
   'Aloe Vera': 'images/aloe.jpg',
@@ -61,7 +61,9 @@ const plantImages = {
 };
 
 function showPlantPreview(plant) {
+  const previewFrame = document.getElementById('plant-preview-frame');
   const previewImage = document.getElementById('plant-preview-image');
+  const previewCaption = document.getElementById('plant-preview-caption');
   const plantName = plant['Plant Type'].trim();
   const imagePath = plantImages[plantName];
 
@@ -73,13 +75,35 @@ function showPlantPreview(plant) {
   previewImage.src = imagePath;
   previewImage.alt = plantName;
   previewImage.hidden = false;
+  previewFrame.hidden = false;
+  const details = (plant['Caption'] || '').trim() || [
+    `Origin: ${plant['Region_of_Origin'] || 'Not specified'}`,
+    `Sunlight: ${plant['Sunlight_Requirements'] || 'Not specified'}`,
+    `Water: ${plant['Optimal_Watering_Frequency'] || 'Not specified'}`
+  ].join('\n');
+  previewCaption.textContent = `${plantName}\n${details}`;
+  previewCaption.hidden = false;
 }
 
 function clearPlantPreview() {
+  const previewFrame = document.getElementById('plant-preview-frame');
   const previewImage = document.getElementById('plant-preview-image');
+  const previewCaption = document.getElementById('plant-preview-caption');
   previewImage.hidden = true;
   previewImage.removeAttribute('src');
   previewImage.alt = '';
+  previewCaption.hidden = true;
+  previewCaption.textContent = '';
+  previewFrame.hidden = true;
+}
+
+function filterBySearch(plants, searchTerm) {
+  if (!searchTerm) return plants;
+
+  const term = searchTerm.toLowerCase();
+  return plants.filter((plant) =>
+    plant['Plant Type'].toLowerCase().includes(term)
+  );
 }
 
 function getSortedPlants(sortKey) {
@@ -100,22 +124,20 @@ function getSortedPlants(sortKey) {
   });
 }
 
-function filterBySearch(plants, searchTerm) {
-  if (!searchTerm) return plants;
-
-  const term = searchTerm.toLowerCase();
-  return plants.filter((plant) =>
-    plant['Plant Type'].toLowerCase().includes(term)
-  );
+function getCategoryColor(sortKey, value) {
+  const config = sortConfig[sortKey];
+  return config.colors[value] || config.colors.default || '#D3BCC7';
 }
 
-function renderPlants(plants, sortKey = 'all') {
+function renderPlants(plants, sortKey = 'all', category = '') {
   const plantList = document.getElementById('plant-list');
   plantList.innerHTML = '';
 
   const searchField = document.getElementById('plant-search');
   const searchTerm = searchField ? searchField.value.trim() : '';
-  const filteredPlants = filterBySearch(plants, searchTerm);
+  const filteredPlants = filterBySearch(plants, searchTerm).filter((plant) =>
+    !category || (plant[sortConfig[sortKey].field] || '').trim() === category
+  );
 
   filteredPlants.forEach((plant) => {
     const listItem = document.createElement('li');
@@ -136,17 +158,17 @@ function renderPlants(plants, sortKey = 'all') {
       const waterTag = document.createElement('span');
       waterTag.textContent = plant['Optimal_Watering_Frequency'];
       waterTag.className = 'water-tag';
-      waterTag.style.backgroundColor = sortConfig.water.colors[plant['Optimal_Watering_Frequency']] || '#D3BCC7';
+      waterTag.style.backgroundColor = getCategoryColor('water', plant['Optimal_Watering_Frequency']);
 
       const sunlightTag = document.createElement('span');
       sunlightTag.textContent = plant['Sunlight_Requirements'];
       sunlightTag.className = 'water-tag';
-      sunlightTag.style.backgroundColor = sortConfig.sunlight.colors[plant['Sunlight_Requirements']] || '#D3BCC7';
+      sunlightTag.style.backgroundColor = getCategoryColor('sunlight', plant['Sunlight_Requirements']);
 
       const locationTag = document.createElement('span');
       locationTag.textContent = plant['Region_of_Origin'];
       locationTag.className = 'water-tag';
-      locationTag.style.backgroundColor = sortConfig.location.colors.default || '#D3BCC7';
+      locationTag.style.backgroundColor = getCategoryColor('location', plant['Region_of_Origin']);
 
       tagWrap.appendChild(waterTag);
       tagWrap.appendChild(sunlightTag);
@@ -156,7 +178,7 @@ function renderPlants(plants, sortKey = 'all') {
       const tag = document.createElement('span');
       tag.textContent = plant[config.field];
       tag.className = 'water-tag';
-      tag.style.backgroundColor = config.colors[plant[config.field]] || config.colors.default || '#D3BCC7';
+      tag.style.backgroundColor = getCategoryColor(sortKey, plant[config.field]);
       tagWrap.appendChild(tag);
     }
 
@@ -166,7 +188,43 @@ function renderPlants(plants, sortKey = 'all') {
   });
 }
 
+function renderCategoryButtons(sortKey) {
+  const categoryButtons = document.getElementById('category-buttons');
+  categoryButtons.innerHTML = '';
 
+  if (sortKey === 'all') {
+    categoryButtons.hidden = true;
+    return;
+  }
+
+  const config = sortConfig[sortKey];
+  const values = [...new Set(allPlants
+    .map((plant) => (plant[config.field] || '').trim())
+    .filter(Boolean))]
+    .sort((a, b) => a.localeCompare(b));
+  const categories = [{ label: 'All', value: '' }, ...values.map((value) => ({ label: value, value }))];
+
+  categories.forEach(({ label, value }) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'btn btn-block btn-primary category-button';
+    button.textContent = label;
+    button.classList.toggle('active', value === activeCategory);
+    button.setAttribute('aria-pressed', String(value === activeCategory));
+    button.style.setProperty(
+      '--category-color',
+      value ? getCategoryColor(sortKey, value) : '#D1B3C4'
+    );
+    button.addEventListener('click', () => {
+      activeCategory = value;
+      renderCategoryButtons(activeSort);
+      renderPlants(getSortedPlants(activeSort), activeSort, activeCategory);
+    });
+    categoryButtons.appendChild(button);
+  });
+
+  categoryButtons.hidden = false;
+}
 
 async function loadData() {
   try {
@@ -177,7 +235,8 @@ async function loadData() {
     }
 
     allPlants = await response.json();
-    renderPlants(allPlants, 'water');
+    renderCategoryButtons(activeSort);
+    renderPlants(allPlants, activeSort);
   } catch (error) {
     console.error('Error loading plant data:', error);
     const plantList = document.getElementById('plant-list');
@@ -210,28 +269,36 @@ function setActiveSort(sortKey) {
 
 if (allButton) {
   allButton.addEventListener('click', () => {
+    activeCategory = '';
     setActiveSort('all');
+    renderCategoryButtons('all');
     renderPlants(allPlants, activeSort);
   });
 }
 
 if (waterButton) {
   waterButton.addEventListener('click', () => {
+    activeCategory = '';
     setActiveSort('water');
+    renderCategoryButtons('water');
     renderPlants(getSortedPlants('water'), activeSort);
   });
 }
 
 if (sunlightButton) {
   sunlightButton.addEventListener('click', () => {
+    activeCategory = '';
     setActiveSort('sunlight');
+    renderCategoryButtons('sunlight');
     renderPlants(getSortedPlants('sunlight'), activeSort);
   });
 }
 
 if (locationButton) {
   locationButton.addEventListener('click', () => {
+    activeCategory = '';
     setActiveSort('location');
+    renderCategoryButtons('location');
     renderPlants(getSortedPlants('location'), activeSort);
   });
 }
@@ -241,11 +308,11 @@ setActiveSort(activeSort);
 if (searchField) {
   searchField.addEventListener('input', () => {
     if (activeSort === 'water') {
-      renderPlants(getSortedPlants('water'), 'water');
+      renderPlants(getSortedPlants('water'), 'water', activeCategory);
     } else if (activeSort === 'sunlight') {
-      renderPlants(getSortedPlants('sunlight'), 'sunlight');
+      renderPlants(getSortedPlants('sunlight'), 'sunlight', activeCategory);
     } else if (activeSort === 'location') {
-      renderPlants(getSortedPlants('location'), 'location');
+      renderPlants(getSortedPlants('location'), 'location', activeCategory);
     } else {
       renderPlants(allPlants, 'all');
     }

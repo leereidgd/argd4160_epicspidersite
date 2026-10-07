@@ -17,10 +17,14 @@
         <button type="button" id="location-button" class="btn btn-block btn-primary">Location</button>
         <button type="button" id="sunlight-button" class="btn btn-block btn-primary">Sunlight Requirement</button>
     </div>
+    <div id="category-buttons" class="button-row category-buttons" role="group" aria-label="Plant categories" hidden></div>
     <div class="plant-content">
         <ul id="plant-list"></ul>
         <aside id="plant-preview" aria-live="polite">
-            <img id="plant-preview-image" alt="" hidden>
+            <figure id="plant-preview-frame" hidden>
+                <img id="plant-preview-image" alt="" hidden>
+                <figcaption id="plant-preview-caption" hidden></figcaption>
+            </figure>
         </aside>
     </div>
     <p>
